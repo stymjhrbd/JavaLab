@@ -1,0 +1,62 @@
+package com.tester;
+
+import java.util.Scanner;
+
+import com.bank.core.*;
+
+public class Tester {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		int ch=0;
+		BankAccount[] bank = new BankAccount[100];
+		int count = 0;
+		
+		do {
+			System.out.println("==========================\n1.Open savings account\n2.Open current account\n3.display account summary\n4.deposite\n5.withdraw\n=======================");
+			switch (sc.nextInt()) {
+			case 1: {
+				System.out.println("Enter details for new savings account accNo, bal, name, mobNum, interestRate");
+				bank[count] = new SavingAccount(sc.nextInt(), sc.nextDouble(), sc.next(), sc.next(), sc.nextDouble());
+				count++;
+				System.out.println("SAVINGS ACCOUNT ADDED!!!!\n");
+			break;	
+			}case 2: {
+				System.out.println("Enter details for new Current account accNo, bal, name, mobNum, interestRate");
+				bank[count] = new CurrentAccount(sc.nextInt(), sc.nextDouble(), sc.next(), sc.next(), sc.nextDouble());
+				count++;
+				System.out.println("CURRENT ACCOUNT ADDED!!!!\n");
+				
+			break;	
+			}case 3: {
+				System.out.println("Enter account number to get summary");
+				int tempAcc = sc.nextInt();
+				for(BankAccount b: bank) {
+					if(tempAcc == b.getAccNo()) {
+						System.out.println(b);
+					}else {
+						System.out.println("Invalid Account number");
+					}
+				}
+				
+			break;	
+			}case 4: {
+				System.out.println("Enter account number to Deposite");
+				tempAcc = sc.nextInt();
+				for(BankAccount b: bank) {
+					if(tempAcc == b.getAccNo()) {
+				
+			break;	
+			}case 5: {
+				
+			break;	
+			}
+			default:
+				
+			}
+		} while (ch!=0);
+		
+	}
+
+}

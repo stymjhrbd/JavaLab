@@ -1,0 +1,34 @@
+package com.bank.core;
+
+public class CurrentAccount extends BankAccount {
+	private double overDraftLimit = 2000;
+
+	public CurrentAccount(int accNo, double bal, String name, String mobNum,double overDraftLimit) {
+		super(accNo, bal, name, mobNum);
+		this.overDraftLimit = overDraftLimit;
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + " remaining overDraftLimit " + overDraftLimit;
+	}
+
+	public boolean withdraw(double amount) {
+		double currBal = super.getBal();
+		if (currBal + overDraftLimit > amount) {
+			System.out.println("Amount withdrawn " + amount + " your overdraftlimit is now "
+					+ (currBal + overDraftLimit - amount) + " \n");
+			overDraftLimit = currBal + overDraftLimit - amount;
+			return true;
+		} else if (currBal + overDraftLimit == amount) {
+			System.out.println("Amount withdrawn " + amount + " your overdraftlimit is now "
+					+ (currBal + overDraftLimit - amount) + "\n");
+			overDraftLimit = currBal + overDraftLimit - amount;
+			return true;
+		} else {
+			System.out.println("Overdraft limit reached\n");
+			return false;
+		}
+	}
+
+}

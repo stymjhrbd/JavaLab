@@ -1,0 +1,46 @@
+package com.bank.core;
+
+public class BankAccount {
+	private int accNo;
+	private double bal;
+	private String name;
+	private String mobNum;
+
+	public BankAccount(int accNo, double bal, String name, String mobNum) {
+		super();
+		this.accNo = accNo;
+		this.bal = bal;
+		this.name = name;
+		this.mobNum = mobNum;
+	}
+
+	public double getBal() {
+		return bal;
+	}
+
+	public void setBal(double bal) {
+		this.bal = bal;
+	}
+
+	public int getAccNo() {
+		return accNo;
+	}
+
+	@Override
+	public String toString() {
+		return "Account details are " + accNo + " " + bal + " " + name + " " + mobNum + "\n";
+	}
+
+	public void deposit(double amount) {
+
+		bal += amount;
+		System.out.println(amount + " has deposited successfully and your balance is " + bal);
+	}
+
+	public boolean withdraw(double amount) {
+		if (bal >= amount)
+			return true;
+		else
+			return false;
+	}
+}
